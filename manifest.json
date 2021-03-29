@@ -1,0 +1,26 @@
+{
+  "name": "New Tab With Group Shortcuts",
+  "description": "Add shortcuts for opening a new tab with group",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "open-tab-current-group": {
+      "suggested_key": {
+        "default": "Alt+Shift+T",
+        "mac": "Alt+Shift+T"
+      },
+      "description": "Open new tab in current group"
+    },
+    "open-tab-new-group": {
+      "suggested_key": {
+        "default": "Alt+Shift+G",
+        "mac": "Alt+Shift+G"
+      },
+      "description": "Open new tab in new group"
+    }
+  },
+  "icons": { "48": "img/icon48.png", "128": "img/icon128.png" }
+}
