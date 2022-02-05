@@ -50,5 +50,5 @@ async function toggleSound(currentTab) {
 }
 
 async function duplicateCurrentTab(currentTab) {
-  chrome.tabs.duplicate(currentTab);
+  chrome.tabs.duplicate(currentTab.id);
 }
