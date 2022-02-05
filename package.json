@@ -1,0 +1,21 @@
+{
+  "name": "tab-shortcuts",
+  "version": "1.0.0",
+  "description": "A chrome extension which adds some shortcuts for tabs",
+  "main": "src/background.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longdoan7421/tab-shortcuts-extension.git"
+  },
+  "keywords": [
+    "chrome",
+    "chrome-extension"
+  ],
+  "author": "Long Doan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/longdoan7421/tab-shortcuts-extension/issues"
+  },
+  "homepage": "https://github.com/longdoan7421/tab-shortcuts-extension#readme"
+}
