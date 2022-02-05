@@ -1,6 +1,6 @@
 {
-  "name": "New Tab With Group Shortcuts",
-  "description": "Add shortcuts for opening a new tab with group",
+  "name": "Tab Shortcuts",
+  "description": "Add some shortcuts for tabs",
   "version": "1.0",
   "manifest_version": 3,
   "background": {
@@ -19,7 +19,24 @@
         "default": "Alt+Shift+G",
         "mac": "Alt+Shift+G"
       },
-      "description": "Open new tab in new group"
+      "description": "Open new tab in a new group"
+    },
+    "ungroup-current-tab": {
+      "description": "Ungroup current tab"
+    },
+    "toggle-sound": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Alt+Shift+S"
+      },
+      "description": "Toggle sound of current tab"
+    },
+    "duplicate-current-tab": {
+      "suggested_key": {
+        "default": "Alt+Shift+D",
+        "mac": "Alt+Shift+D"
+      },
+      "description": "Duplicate current tab"
     }
   },
   "icons": { "48": "img/icon48.png", "128": "img/icon128.png" }
