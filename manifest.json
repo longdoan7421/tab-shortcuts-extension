@@ -3,7 +3,13 @@
   "description": "Add some shortcuts for tabs",
   "version": "1.0",
   "manifest_version": 3,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tab-shortcuts@longdoan"
+    }
+  },
   "background": {
+    "scripts": ["src/background.js"],
     "service_worker": "src/background.js"
   },
   "commands": {
