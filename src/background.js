@@ -1,4 +1,6 @@
-chrome.commands.onCommand.addListener((command, tab) => {
+const api = typeof browser !== 'undefined' ? browser : chrome;
+
+api.commands.onCommand.addListener((command, tab) => {
   if (!tab) return;
 
   switch (command) {
@@ -7,6 +9,9 @@ chrome.commands.onCommand.addListener((command, tab) => {
       break;
     case 'open-tab-new-group':
       openTabNewGroup(tab);
+      break;
+    case 'move-tab-to-group':
+      moveTabToGroup(tab);
       break;
     case 'remove-tab-from-group':
       removeTabFromGroup(tab);
@@ -23,32 +28,54 @@ chrome.commands.onCommand.addListener((command, tab) => {
 });
 
 async function openTabCurrentGroup(currentTab) {
-  const sameGroupTabs = await chrome.tabs.query({ currentWindow: true, groupId: currentTab.groupId });
+  const sameGroupTabs = await api.tabs.query({ currentWindow: true, groupId: currentTab.groupId });
 
-  const newTab = await chrome.tabs.create({ active: true, index: sameGroupTabs[sameGroupTabs.length - 1].index + 1 });
-  chrome.tabs.group({
+  const newTab = await api.tabs.create({ active: true, index: sameGroupTabs[sameGroupTabs.length - 1].index + 1 });
+  api.tabs.group({
     tabIds: newTab.id,
     groupId: currentTab.groupId,
   });
 }
 
 async function openTabNewGroup(currentTab) {
-  const newTab = await chrome.tabs.create({ active: true });
-  chrome.tabs.group({
+  const newTab = await api.tabs.create({ active: true });
+  api.tabs.group({
     tabIds: newTab.id,
     groupId: undefined,
   });
 }
 
 async function removeTabFromGroup(currentTab) {
-  chrome.tabs.ungroup(currentTab.id);
+  api.tabs.ungroup(currentTab.id);
 }
 
 async function toggleSound(currentTab) {
   let muted = !currentTab.mutedInfo.muted;
-  chrome.tabs.update(currentTab.id, { muted });
+  api.tabs.update(currentTab.id, { muted });
 }
 
 async function duplicateCurrentTab(currentTab) {
-  chrome.tabs.duplicate(currentTab.id);
+  api.tabs.duplicate(currentTab.id);
+}
+
+async function moveTabToGroup(currentTab) {
+  try {
+    const groups = await api.tabGroups.query();
+
+    if (groups.length === 0) {
+      api.tabs.group({
+        tabIds: currentTab.id,
+        groupId: undefined,
+      });
+      return;
+    }
+
+    const newGroupIndex = currentTab.groupId ? groups.findIndex((group) => group.id === currentTab.groupId) : 0;
+    api.tabs.group({
+      tabIds: currentTab.id,
+      groupId: groups[newGroupIndex].id,
+    });
+  } catch (e) {
+    console.error(`${moveTabToGroup.name} Unknown error.`, e);
+  }
 }

@@ -27,8 +27,11 @@
       },
       "description": "Open new tab in a new group"
     },
-    "ungroup-current-tab": {
-      "description": "Ungroup current tab"
+    "move-tab-to-group": {
+      "description": "Move tab to group"
+    },
+    "remove-tab-from-group": {
+      "description": "Remove tab from group"
     },
     "toggle-sound": {
       "suggested_key": {
