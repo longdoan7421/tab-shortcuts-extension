@@ -5,7 +5,8 @@
   "manifest_version": 3,
   "browser_specific_settings": {
     "gecko": {
-      "id": "tab-shortcuts@longdoan"
+      "id": "tab-shortcuts@longdoan.dev",
+      "update_url": "https://github.com/longdoan7421/tab-shortcuts-extension/blob/main/manifest.json"
     }
   },
   "background": {
