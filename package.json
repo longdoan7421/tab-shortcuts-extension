@@ -6,7 +6,7 @@
   "scripts": {
     "start:firefox": "web-ext run --source-dir .",
     "start:chrome": "web-ext run --source-dir . --target=chromium",
-    "build": "web-ext build --source-dir . --artifacts-dir ./dist"
+    "build": "web-ext build --source-dir . --artifacts-dir ./dist --overwrite-dest"
   },
   "repository": {
     "type": "git",
